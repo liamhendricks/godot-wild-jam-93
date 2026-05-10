@@ -21,7 +21,11 @@ GameManager="*uid://bdteig7c8tnoq"
 
 [display]
 
+window/size/viewport_width=854
+window/size/viewport_height=480
 window/size/mode=3
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 

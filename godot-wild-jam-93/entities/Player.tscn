@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://burdi143fivno"]
+
+[ext_resource type="Script" uid="uid://7s2orcl5po0w" path="res://entities/Player.gd" id="1_ojs4q"]
+[ext_resource type="Script" uid="uid://be36p4yydhbkw" path="res://components/MovementComponent.gd" id="2_lw5ub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
+
+[node name="Player" type="CharacterBody2D" unique_id=541402811 node_paths=PackedStringArray("movement_component")]
+script = ExtResource("1_ojs4q")
+movement_component = NodePath("MovementComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1822778185]
+shape = SubResource("CircleShape2D_1bvp3")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1872885715 node_paths=PackedStringArray("body_to_move")]
+script = ExtResource("2_lw5ub")
+body_to_move = NodePath("..")
+metadata/_custom_type_script = "uid://be36p4yydhbkw"

@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var movement_component : MovementComponent
+@export var state_machine : StateMachine
+@onready var raycast : RayCast2D = $RayCast2D
 
 var active_chunk : Vector2i
 var dir : Vector2 = Vector2.ZERO
@@ -10,4 +12,5 @@ func _ready() -> void:
 	self.draw.connect(_on_draw)
 
 func _on_draw() -> void:
-	self.draw_rect(Rect2(position.x, position.y, 32.0, 32.0), Color.BLUE)
+	self.draw_rect(Rect2(position.x - 16.0, position.y - 16.0, 32.0, 32.0), Color.BLUE)
+	self.draw_rect(Rect2(position.x + 16.0, position.y - 8.0, 8.0, 8.0), Color.BLUE)

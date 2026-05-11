@@ -4,10 +4,12 @@ class_name ShapeGenerator
 @export var noise_texture : NoiseTexture2D
 @export var threshold : float = 0.3
 @export var max_shapes : int = 128
-@export var world_scale : float = 2.0
+@export var world_scale : float = 8.0
 @export var player : Player
 
 var noise_image : Image
+
+var asteroid_scene = load("res://entities/Asteroid.tscn")
 
 func _ready() -> void:
 	if not noise_texture.changed.is_connected(_on_noise_texture_changed):
@@ -22,31 +24,25 @@ func _ready() -> void:
 func draw() -> void:
 	for n in range(max_shapes):
 		var local_pos = Vector2(
-			GameManager.rng.randf_range(int(-noise_texture.height) / 2.0, int(noise_texture.height) / 2.0),
-			GameManager.rng.randf_range(int(-noise_texture.height) / 2.0, int(noise_texture.height) / 2.0)
+			GameManager.rng.randf_range(0.0, int(noise_texture.width)),
+			GameManager.rng.randf_range(0.0, int(noise_texture.height))
 		)
 		var value := sample_noise(local_pos)
 		if value < threshold:
 			continue
 
-		var node := Node2D.new()
+		var node = asteroid_scene.instantiate()
 		add_child(node)
-		node.draw.connect(_on_draw.bind(node))
-		node.position = local_pos
+		var centered_pos = local_pos - Vector2(
+			noise_texture.width * 0.5,
+			noise_texture.height * 0.5
+		)
 
-func sample_noise(world_pos : Vector2) -> float:
-	var x := int(round(world_pos.x / world_scale))
-	var y := int(round(world_pos.y / world_scale))
+		var world_space = centered_pos * world_scale
+		node.position = world_space
 
-	if x < 0:
-		x += noise_texture.height
-	if y < 0:
-		y += noise_texture.width
-
-	return noise_image.get_pixel(x, y).r
-
-func _on_draw(node : Node2D) -> void:
-	node.draw_circle(node.position, 64.0, Color.RED, true)
+func sample_noise(pos : Vector2) -> float:
+	return noise_image.get_pixel(int(pos.x), int(pos.y)).r
 
 func _on_noise_texture_changed() -> void:
 	pass

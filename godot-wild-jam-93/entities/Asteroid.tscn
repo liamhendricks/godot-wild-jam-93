@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dm1rxwphsrdjd"]
+
+[ext_resource type="Script" uid="uid://cdojdsab21ytx" path="res://entities/Asteroid.gd" id="1_11ekk"]
+
+[node name="Asteroid" type="RigidBody2D" unique_id=956237818]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_11ekk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1601113589]

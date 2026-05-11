@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ckxcvb6m1a7ls"]
+
+[ext_resource type="Script" uid="uid://d32lkmsuwn1g" path="res://effects/DrillParticles.gd" id="1_xkria"]
+
+[sub_resource type="Gradient" id="Gradient_la8f7"]
+colors = PackedColorArray(0.7372549, 0.5294118, 0.1882353, 1, 0.94509804, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xkria"]
+noise_type = 0
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gohai"]
+width = 8
+height = 8
+noise = SubResource("FastNoiseLite_xkria")
+color_ramp = SubResource("Gradient_la8f7")
+
+[sub_resource type="Curve" id="Curve_la8f7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.7552302), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xkria"]
+curve = SubResource("Curve_la8f7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cqtsh"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 45, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 9.999997
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+tangential_accel_min = -10.000002
+tangential_accel_max = 9.999997
+scale_min = 0.099999994
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_xkria")
+
+[node name="DrillParticles" type="Node2D" unique_id=1061447708]
+script = ExtResource("1_xkria")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2008730907]
+emitting = false
+amount = 50
+texture = SubResource("NoiseTexture2D_gohai")
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_cqtsh")

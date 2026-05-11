@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*uid://bdteig7c8tnoq"
 SignalBus="*uid://bu84tfgl5144j"
 LogManager="*uid://dlejp4mosxvdv"
+UserInterface="*uid://clu0l3n45ydqp"
 
 [display]
 

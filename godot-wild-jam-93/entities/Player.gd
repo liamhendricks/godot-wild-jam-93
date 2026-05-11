@@ -4,6 +4,8 @@ class_name Player
 @export var movement_component : MovementComponent
 @export var state_machine : StateMachine
 @onready var raycast : RayCast2D = $RayCast2D
+@onready var left_spawn : Node2D = $LeftSpawn
+@onready var right_spawn : Node2D = $RightSpawn
 
 var active_chunk : Vector2i
 var dir : Vector2 = Vector2.ZERO

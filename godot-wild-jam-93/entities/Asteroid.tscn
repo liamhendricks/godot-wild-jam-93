@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dm1rxwphsrdjd"]
 
 [ext_resource type="Script" uid="uid://cdojdsab21ytx" path="res://entities/Asteroid.gd" id="1_11ekk"]
+[ext_resource type="Script" uid="uid://b54wodi4jaa3h" path="res://components/PointCreateComponent.gd" id="2_ilay8"]
+[ext_resource type="Script" uid="uid://dkk3ojuvsva8i" path="res://components/PolygonSplitComponent.gd" id="3_tm4ig"]
 
 [node name="Asteroid" type="RigidBody2D" unique_id=956237818]
 collision_layer = 2
@@ -9,3 +11,10 @@ gravity_scale = 0.0
 script = ExtResource("1_11ekk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1601113589]
+
+[node name="PointCreateComponent" type="Node" parent="." unique_id=2006931831]
+script = ExtResource("2_ilay8")
+
+[node name="PolygonSplitComponent" type="Node" parent="." unique_id=1483968233]
+script = ExtResource("3_tm4ig")
+shrink_modifier = 0.75

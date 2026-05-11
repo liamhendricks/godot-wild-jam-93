@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d2oq3o53weuwx"]
+
+[ext_resource type="Script" uid="uid://b4mto80j8slix" path="res://entities/Minimap.gd" id="1_2xpgl"]
+
+[node name="Minimap" type="Control" unique_id=1828401618]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2xpgl")

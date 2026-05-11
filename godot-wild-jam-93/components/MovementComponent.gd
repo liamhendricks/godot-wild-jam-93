@@ -7,9 +7,13 @@ class_name MovementComponent
 @export var drag : float = 100.0
 
 var dir : Vector2
+var locked_dir : Vector2
 
 func _physics_process(delta: float) -> void:
 	dir = Input.get_vector("left", "right", "up", "down")
+	if locked_dir != Vector2.ZERO:
+		pass
+
 	var velocity := dir * speed
 
 	if dir == Vector2.ZERO:

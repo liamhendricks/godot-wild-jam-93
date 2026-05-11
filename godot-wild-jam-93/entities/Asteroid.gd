@@ -2,23 +2,23 @@ extends RigidBody2D
 class_name Asteroid
 
 @onready var collision_shape : CollisionPolygon2D = $CollisionPolygon2D
+@onready var point_create_component : PointCreateComponent = $PointCreateComponent
+@onready var polygon_split_component : PolygonSplitComponent = $PolygonSplitComponent
 
-const MAX_POINTS : int = 16
-const MIN_POINTS : int = 12
-const SIZE_PX : float = 128.0
+var position_key : Vector2
 
 func _ready() -> void:
 	draw.connect(_on_draw)
-	var r := GameManager.rng.randi_range(MIN_POINTS, MAX_POINTS)
-	var points : PackedVector2Array = []
-	for n in range(r):
-		var x := GameManager.rng.randf_range(-SIZE_PX, SIZE_PX)
-		var y := GameManager.rng.randf_range(-SIZE_PX, SIZE_PX)
-		points.append(Vector2(x, y))
 
+func create_points(size : float) -> void:
+	collision_shape.polygon = point_create_component.create_convex_points(size)
+
+func set_points(points : PackedVector2Array) -> void:
 	var convex_points = Geometry2D.convex_hull(points)
-
 	collision_shape.polygon = convex_points
+
+func split_polygon(dir : Vector2, point : Vector2) -> Array[PackedVector2Array]:
+	return polygon_split_component.split_polygon(dir, point, collision_shape.polygon)
 
 func _on_draw() -> void:
 	draw_colored_polygon(collision_shape.polygon, Color.SADDLE_BROWN)

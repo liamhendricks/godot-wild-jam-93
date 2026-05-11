@@ -18,3 +18,6 @@ func _physics_process(delta: float) -> void:
 		body_to_move.velocity = body_to_move.velocity.move_toward(velocity, delta * acceleration)
 
 	body_to_move.move_and_slide()
+
+func _process(_delta: float) -> void:
+	body_to_move.look_at(body_to_move.get_global_mouse_position())

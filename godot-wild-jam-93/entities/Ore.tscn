@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c3w832r7866b6"]
+
+[ext_resource type="Script" uid="uid://duqpybowitx" path="res://entities/Ore.gd" id="1_0eihh"]
+[ext_resource type="Script" uid="uid://b54wodi4jaa3h" path="res://components/PointCreateComponent.gd" id="2_8ft8t"]
+
+[node name="Ore" type="RigidBody2D" unique_id=45542919]
+gravity_scale = 0.0
+script = ExtResource("1_0eihh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=161058284]
+
+[node name="PointCreateComponent" type="Node" parent="." unique_id=118889988]
+script = ExtResource("2_8ft8t")
+max_points = 12
+min_points = 8
+metadata/_custom_type_script = "uid://b54wodi4jaa3h"

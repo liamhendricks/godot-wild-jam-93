@@ -19,14 +19,14 @@ func init(_player : Player) -> void:
 	_current_state = states[0]
 	_current_state.enter()
 
-func transition(to : String) -> void:
+func transition(to : String, data : Dictionary = {}) -> void:
 	if to not in _states:
 		return
 
 	var from := _current_state
 	_current_state.exit()
 	_current_state = _states[to]
-	_current_state.enter()
+	_current_state.enter(data)
 
 	SignalBus.state_transition.emit(from, _current_state)
 

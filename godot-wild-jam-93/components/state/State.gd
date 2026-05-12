@@ -13,7 +13,7 @@ func process(_delta:float) -> void:
 func physics_process(_delta:float) -> void:
 	pass
 
-func enter() -> void:
+func enter(_data : Dictionary = {}) -> void:
 	pass
 
 func exit() -> void:

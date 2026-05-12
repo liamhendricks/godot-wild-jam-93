@@ -9,7 +9,7 @@ func physics_process(_delta:float) -> void:
 		machine.transition("drill")
 		return
 
-func enter() -> void:
+func enter(_data : Dictionary = {}) -> void:
 	pass
 
 func exit() -> void:

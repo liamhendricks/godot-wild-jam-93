@@ -7,6 +7,7 @@ extends Node2D
 
 func _ready() -> void:
 	state_machine.init(player)
+	UserInterface.init(player, shape_generator)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):

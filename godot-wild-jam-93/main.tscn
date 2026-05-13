@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c5e2txg2grome" path="res://components/state/Drill.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://c2opaw30b4xa3" path="res://components/state/Burst.gd" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bspesketaayad" path="res://effects/SpaceBackground.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://dmrgm8iua12fd" path="res://entities/Mothership.tscn" id="10_4c57u"]
 
 [sub_resource type="Gradient" id="Gradient_1bvp3"]
 
@@ -59,3 +60,15 @@ state_machine = NodePath("../StateMachine")
 script = ExtResource("4_lquwl")
 states = Array[ExtResource("5_lquwl")]([SubResource("Resource_272bh"), SubResource("Resource_5vw27"), SubResource("Resource_kek77")])
 metadata/_custom_type_script = "uid://bdi6qp6ufr7jy"
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=829186866]
+wait_time = 3.0
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=242551734]
+wait_time = 3.0
+
+[node name="Mothership" parent="." unique_id=1958192661 instance=ExtResource("10_4c57u")]
+gravity_scale = 0.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

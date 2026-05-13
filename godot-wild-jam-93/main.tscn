@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dnv04idjknbk8" path="res://components/state/Fly.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://c5e2txg2grome" path="res://components/state/Drill.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://c2opaw30b4xa3" path="res://components/state/Burst.gd" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bspesketaayad" path="res://effects/SpaceBackground.tscn" id="9_kek77"]
 
 [sub_resource type="Gradient" id="Gradient_1bvp3"]
 
@@ -38,7 +39,9 @@ state_name = "burst"
 metadata/_custom_type_script = "uid://c2opaw30b4xa3"
 
 [node name="Main" type="Node2D" unique_id=915958229]
+z_index = 1
 script = ExtResource("1_0xm2m")
+space_scene = ExtResource("9_kek77")
 
 [node name="ShapeGenerator" type="Node" parent="." unique_id=1826845370 node_paths=PackedStringArray("player")]
 script = ExtResource("1_ig7tw")

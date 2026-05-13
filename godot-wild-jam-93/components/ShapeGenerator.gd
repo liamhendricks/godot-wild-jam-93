@@ -14,11 +14,6 @@ var asteroid_scene = load("res://entities/Asteroid.tscn")
 
 func _ready() -> void:
 	SignalBus.asteroid_split.connect(_on_asteroid_split)
-	
-	if not noise_texture.changed.is_connected(_on_noise_texture_changed):
-		noise_texture.changed.connect(_on_noise_texture_changed)
-
-	await noise_texture.changed
 	noise_image = noise_texture.get_image()
 	assert(noise_image != null)
 

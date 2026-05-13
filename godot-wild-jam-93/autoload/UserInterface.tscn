@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clu0l3n45ydqp"]
 
 [ext_resource type="Script" uid="uid://bc8x8kboirin5" path="res://autoload/UserInterface.gd" id="1_36yy5"]
-[ext_resource type="Script" uid="uid://b4mto80j8slix" path="res://entities/Minimap.gd" id="2_k50kc"]
+[ext_resource type="Script" uid="uid://b4mto80j8slix" path="res://ui/Minimap.gd" id="2_k50kc"]
 
 [node name="UserInterface" type="CanvasLayer" unique_id=294885365]
 script = ExtResource("1_36yy5")

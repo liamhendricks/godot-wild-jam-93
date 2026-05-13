@@ -4,12 +4,15 @@ extends Node2D
 @onready var shape_generator : ShapeGenerator = $ShapeGenerator
 @onready var player : CharacterBody2D = $Player
 @onready var state_machine : StateMachine = $StateMachine
-var enter_timer = 10.0
-var exit_timer = 20
-var mother_ship = preload("res://entities/MotherShip.tscn")
-var mother_arriving = null
+@export var space_scene : PackedScene
+
+var background : SpaceBackground
 
 func _ready() -> void:
+	background = space_scene.instantiate()
+	background.init(player)
+	background.size = get_viewport_rect().size * 1.5
+	add_child(background)
 	state_machine.init(player)
 	UserInterface.init(player, shape_generator)
 	

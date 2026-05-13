@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bspesketaayad"]
+
+[ext_resource type="Shader" uid="uid://82webpe21doi" path="res://effects/space.gdshader" id="1_kn61s"]
+[ext_resource type="Script" uid="uid://b0pjlrislst84" path="res://effects/SpaceBackground.gd" id="2_a3ae4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3ae4"]
+shader = ExtResource("1_kn61s")
+shader_parameter/stars_speed = Vector2(0, 0)
+shader_parameter/stars_density = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kn61s"]
+
+[node name="SpaceBackground" type="TextureRect" unique_id=1323940814]
+z_index = -4096
+material = SubResource("ShaderMaterial_a3ae4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_kn61s")
+script = ExtResource("2_a3ae4")

@@ -1,10 +1,13 @@
 extends Node
 
+
+
 var rng : RandomNumberGenerator
 
 func _ready() -> void:
 	rng = RandomNumberGenerator.new()
 	rng.seed = hash(Time.get_ticks_msec())
+
 
 func get_centroid(points : PackedVector2Array) -> Vector2:
 	if points.size() == 0:

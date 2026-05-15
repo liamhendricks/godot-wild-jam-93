@@ -2,9 +2,124 @@
 
 [ext_resource type="Script" uid="uid://7s2orcl5po0w" path="res://entities/Player.gd" id="1_ojs4q"]
 [ext_resource type="Script" uid="uid://be36p4yydhbkw" path="res://components/MovementComponent.gd" id="2_lw5ub"]
+[ext_resource type="Texture2D" uid="uid://d1m8652gvjxjq" path="res://assets/itsdrillingtime!!.png" id="3_lw5ub"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks8m5"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ths"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1f57"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25mxy"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv4ir"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idcse"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p37y2"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkqcq"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4uku"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw5ub"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qicf"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqo1p"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q58l"]
+atlas = ExtResource("3_lw5ub")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qicf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks8m5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ths")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1f57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25mxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv4ir")
+}],
+"loop": true,
+"name": &"drill_mode",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idcse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p37y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkqcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4uku")
+}],
+"loop": false,
+"name": &"drill_transition",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw5ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qicf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqo1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q58l")
+}],
+"loop": false,
+"name": &"hull_transition",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=541402811 node_paths=PackedStringArray("movement_component")]
 collision_mask = 2
@@ -30,3 +145,9 @@ position = Vector2(32, 32)
 
 [node name="LeftSpawn" type="Node2D" parent="." unique_id=908902672]
 position = Vector2(32, -32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2120590073]
+texture_filter = 1
+rotation = 1.5718023
+sprite_frames = SubResource("SpriteFrames_7qicf")
+animation = &"hull_transition"

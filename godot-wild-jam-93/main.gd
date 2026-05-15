@@ -51,4 +51,3 @@ func _physics_process(delta: float) -> void:
 		"verticalMovement",
 		player.velocity.y * 0.01
 	)
-

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmrgm8iua12fd"]
+
+[ext_resource type="Texture2D" uid="uid://da6gati2bqvvf" path="res://assets/mothership.webp" id="1_7bytl"]
+[ext_resource type="Script" uid="uid://cqfstfv1k8gh" path="res://entities/mother_ship.gd" id="1_w43xp"]
+
+[node name="MotherShip" type="Node2D" unique_id=1851260540]
+script = ExtResource("1_w43xp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=479078289]
+z_index = -100
+texture = ExtResource("1_7bytl")

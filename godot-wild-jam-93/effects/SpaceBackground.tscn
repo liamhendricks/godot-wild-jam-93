@@ -3,45 +3,20 @@
 [ext_resource type="Shader" uid="uid://82webpe21doi" path="res://effects/space.gdshader" id="1_kn61s"]
 [ext_resource type="Script" uid="uid://b0pjlrislst84" path="res://effects/SpaceBackground.gd" id="2_a3ae4"]
 
-[sub_resource type="Gradient" id="Gradient_kn61s"]
-colors = PackedColorArray(0.8445635, 0.79123443, 7.70092e-07, 1, 1, 1, 0.89411765, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a3ae4"]
-gradient = SubResource("Gradient_kn61s")
-width = 16
-height = 16
-
-[sub_resource type="Gradient" id="Gradient_elcdj"]
-colors = PackedColorArray(0.44705883, 0.5647059, 0, 1, 1, 1, 0.56078434, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ysy7t"]
-gradient = SubResource("Gradient_elcdj")
-width = 16
-height = 16
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3ae4"]
 shader = ExtResource("1_kn61s")
-shader_parameter/gradientA = SubResource("GradientTexture2D_a3ae4")
-shader_parameter/horizontalMovement = 7.450599959213379e-08
-shader_parameter/verticalMovement = 7.450599959213379e-08
-shader_parameter/frequencyStar = 0.00999999977648
-shader_parameter/sizeStar = 30.0
-shader_parameter/brightnessStar = 2.0
-shader_parameter/shineFrequencyStar = 1.0
-shader_parameter/transparencyStar = 0.0
-shader_parameter/starIterations = 2
-shader_parameter/gradientB = SubResource("GradientTexture2D_ysy7t")
-shader_parameter/frequencyBgStar = 0.99599999026407
-shader_parameter/shineFrequencyBgStar = 1.0
-shader_parameter/transparencyBgStar = 0.499999988824
-shader_parameter/colorBackground = Color(0.031699046, 0.02390131, 0.15249223, 1)
-shader_parameter/transparencyBackground = 0.0
-shader_parameter/seed = 26.0
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_kn61s"]
 
 [node name="SpaceBackground" type="TextureRect" unique_id=1323940814]
-visible = false
 z_index = -4096
 material = SubResource("ShaderMaterial_a3ae4")
 anchors_preset = 15
@@ -52,3 +27,4 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("CanvasTexture_kn61s")
 script = ExtResource("2_a3ae4")
+scroll_strength = 0.1

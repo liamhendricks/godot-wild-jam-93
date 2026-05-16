@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 class_name Ore
 
 @export var data : ResourceData
@@ -13,3 +13,9 @@ func _ready() -> void:
 
 func _on_draw() -> void:
 	draw_colored_polygon(collision_shape.polygon, Color.AQUA)
+
+func _on_body_entered(node: Node2D) -> void:
+	if "resource_collection_component" in node:
+		SignalBus.resource_gathered.emit(data)
+		node.resource_collection_component.pick_up(data)
+		queue_free()

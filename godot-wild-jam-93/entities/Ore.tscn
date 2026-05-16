@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://duqpybowitx" path="res://entities/Ore.gd" id="1_0eihh"]
 [ext_resource type="Script" uid="uid://b54wodi4jaa3h" path="res://components/PointCreateComponent.gd" id="2_8ft8t"]
+[ext_resource type="Resource" uid="uid://cmmars863656f" path="res://data/resources/ore_data.tres" id="2_ytd33"]
 
-[node name="Ore" type="RigidBody2D" unique_id=45542919]
-gravity_scale = 0.0
+[node name="Ore" type="Area2D" unique_id=961333652]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
 script = ExtResource("1_0eihh")
+data = ExtResource("2_ytd33")
 size_px = 16.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=161058284]
@@ -15,3 +19,5 @@ script = ExtResource("2_8ft8t")
 max_points = 12
 min_points = 8
 metadata/_custom_type_script = "uid://b54wodi4jaa3h"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

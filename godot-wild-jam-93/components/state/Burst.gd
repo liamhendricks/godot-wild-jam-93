@@ -2,8 +2,8 @@ extends State
 class_name BurstState
 
 @export var burst_accel_multiplier : float = 4.0
-@export var burst_time : float = 2.0
-@export var area_threshold : float = 1500.0
+@export var burst_time : float = 0.5
+@export var area_threshold : float = 1800.0
 
 var asteroid_scene : PackedScene = load("res://entities/Asteroid.tscn")
 var ore_scene : PackedScene = load("res://entities/Ore.tscn")
@@ -15,6 +15,8 @@ func physics_process(_delta:float) -> void:
 	pass
 
 func enter(data : Dictionary = {}) -> void:
+	player.animation.stop()
+	player.animation.play("hull_transition")
 	player.movement_component.acceleration *= burst_accel_multiplier
 	if "asteroid" not in data:
 		machine.transition("fly")

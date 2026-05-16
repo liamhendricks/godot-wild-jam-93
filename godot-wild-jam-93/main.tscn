@@ -47,7 +47,8 @@ space_scene = ExtResource("9_kek77")
 script = ExtResource("1_ig7tw")
 noise_texture = SubResource("NoiseTexture2D_7mycd")
 threshold = 0.5
-world_scale = 8.0
+max_shapes = 256
+world_scale = 16.0
 player = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=851280059]

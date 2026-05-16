@@ -22,6 +22,7 @@ GameManager="*uid://bdteig7c8tnoq"
 SignalBus="*uid://bu84tfgl5144j"
 LogManager="*uid://dlejp4mosxvdv"
 UserInterface="*uid://clu0l3n45ydqp"
+AudioManager="*uid://dtlel7e1phnh0"
 
 [display]
 
@@ -79,6 +80,7 @@ hull_transition={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="asteroids"
+2d_physics/layer_3="hitboxes"
 
 [physics]
 

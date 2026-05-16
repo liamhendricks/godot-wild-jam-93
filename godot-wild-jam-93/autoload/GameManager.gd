@@ -1,6 +1,6 @@
 extends Node
 
-
+enum RESOURCE_TYPES {ORE}
 
 var rng : RandomNumberGenerator
 

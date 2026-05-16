@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ResourceData" format=3 uid="uid://cmmars863656f"]
+
+[ext_resource type="Script" uid="uid://h6yqckn4ona" path="res://data/ResourceData.gd" id="1_880yr"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_880yr")
+resource_amount = 1
+metadata/_custom_type_script = "uid://h6yqckn4ona"

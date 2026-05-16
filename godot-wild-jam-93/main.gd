@@ -4,7 +4,6 @@ extends Node2D
 @onready var shape_generator : ShapeGenerator = $ShapeGenerator
 @onready var player : Player = $Player
 @onready var state_machine : StateMachine = $StateMachine
-@onready var mothership_eye : MotherShipEye = $MotherShipEye
 
 @export var space_scene : PackedScene
 
@@ -28,7 +27,6 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	camera.position = player.position
-	mothership_eye.look_at(player.global_position)
 
 	enter_timer = enter_timer - delta
 	exit_timer = exit_timer - delta
@@ -42,14 +40,3 @@ func _physics_process(delta: float) -> void:
 		if mother_arriving != null:
 			mother_arriving.queue_free()
 			mother_arriving = null
-		
-
-	background.material.set_shader_parameter(
-		"horizontalMovement",
-		player.velocity.x * 0.01
-	)
-
-	background.material.set_shader_parameter(
-		"verticalMovement",
-		player.velocity.y * 0.01
-	)

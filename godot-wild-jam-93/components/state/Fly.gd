@@ -10,7 +10,9 @@ func physics_process(_delta:float) -> void:
 		return
 
 func enter(_data : Dictionary = {}) -> void:
-	pass
+	if player.animation.animation == "drilling" || player.animation.animation == "drill_transition":
+		player.animation.stop()
+		player.animation.play("hull_transition")
 
 func exit() -> void:
 	pass

@@ -31,6 +31,12 @@ func process(delta : float) -> void:
 		machine.transition("burst", {"asteroid": asteroid})
 		return
 
+	if player.animation.is_playing():
+		return
+
+	if player.animation.animation != "drill_mode":
+		player.animation.play("drill_mode")
+
 func physics_process(_delta : float) -> void:
 	if !player.raycast.is_colliding():
 		machine.transition("fly")
@@ -41,6 +47,10 @@ func physics_process(_delta : float) -> void:
 		enter()
 
 func enter(_data : Dictionary = {}) -> void:
+	AudioManager.play_audio("drill1", 2)
+
+	player.animation.stop()
+	player.animation.play("drill_transition")
 	_set_asteroid()
 	var velocity := player.raycast.target_position.normalized() * INITIAL_VELOCITY_MODIFIER
 	player.velocity = velocity
@@ -52,6 +62,7 @@ func enter(_data : Dictionary = {}) -> void:
 	player.movement_component.drag = drill_drag
 
 func exit() -> void:
+	AudioManager.stop_audio("drill1", 2)	
 	asteroid = null
 	drill_particles.particles.emitting = false
 	player.movement_component.speed = speed_tmp

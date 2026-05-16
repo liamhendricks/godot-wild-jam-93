@@ -22,8 +22,8 @@ height = 16
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3ae4"]
 shader = ExtResource("1_kn61s")
 shader_parameter/gradientA = SubResource("GradientTexture2D_a3ae4")
-shader_parameter/horizontalMovement = 7.450599959213378e-08
-shader_parameter/verticalMovement = 7.450599959213378e-08
+shader_parameter/horizontalMovement = 7.450599959213379e-08
+shader_parameter/verticalMovement = 7.450599959213379e-08
 shader_parameter/frequencyStar = 0.00999999977648
 shader_parameter/sizeStar = 30.0
 shader_parameter/brightnessStar = 2.0
@@ -41,6 +41,7 @@ shader_parameter/seed = 26.0
 [sub_resource type="CanvasTexture" id="CanvasTexture_kn61s"]
 
 [node name="SpaceBackground" type="TextureRect" unique_id=1323940814]
+visible = false
 z_index = -4096
 material = SubResource("ShaderMaterial_a3ae4")
 anchors_preset = 15

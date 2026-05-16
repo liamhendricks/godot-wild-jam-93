@@ -15,4 +15,5 @@ func create_convex_points(size_px : float) -> PackedVector2Array:
 	var convex_points = Geometry2D.convex_hull(points)
 	if Geometry2D.is_polygon_clockwise(convex_points):
 		convex_points.reverse()
+
 	return convex_points

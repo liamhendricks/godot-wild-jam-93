@@ -2,17 +2,25 @@ extends Node2D
 
 @onready var camera : Camera2D = $Camera2D
 @onready var shape_generator : ShapeGenerator = $ShapeGenerator
-@onready var player : CharacterBody2D = $Player
+@onready var player : Player = $Player
 @onready var state_machine : StateMachine = $StateMachine
+@onready var mothership_eye : MotherShipEye = $MotherShipEye
+
+@export var space_scene : PackedScene
+
 var enter_timer = 10.0
 var exit_timer = 20
 var mother_ship = preload("res://entities/MotherShip.tscn")
 var mother_arriving = null
+var background : SpaceBackground
 
 func _ready() -> void:
+	background = space_scene.instantiate()
+	background.init(player)
+	background.size = get_viewport_rect().size * 1.5
+	add_child(background)
 	state_machine.init(player)
 	UserInterface.init(player, shape_generator)
-	
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
@@ -20,6 +28,8 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	camera.position = player.position
+	mothership_eye.look_at(player.global_position)
+
 	enter_timer = enter_timer - delta
 	exit_timer = exit_timer - delta
 	if enter_timer <= 0:
@@ -33,3 +43,13 @@ func _physics_process(delta: float) -> void:
 			mother_arriving.queue_free()
 			mother_arriving = null
 		
+
+	background.material.set_shader_parameter(
+		"horizontalMovement",
+		player.velocity.x * 0.01
+	)
+
+	background.material.set_shader_parameter(
+		"verticalMovement",
+		player.velocity.y * 0.01
+	)

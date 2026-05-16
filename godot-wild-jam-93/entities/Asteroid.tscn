@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://dm1rxwphsrdjd"]
 
 [ext_resource type="Script" uid="uid://cdojdsab21ytx" path="res://entities/Asteroid.gd" id="1_11ekk"]
+[ext_resource type="Shader" uid="uid://bbbfvdy24ixft" path="res://entities/asteroid.gdshader" id="1_bl4sn"]
 [ext_resource type="Script" uid="uid://b54wodi4jaa3h" path="res://components/PointCreateComponent.gd" id="2_ilay8"]
 [ext_resource type="Script" uid="uid://dkk3ojuvsva8i" path="res://components/PolygonSplitComponent.gd" id="3_tm4ig"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37jkc"]
+shader = ExtResource("1_bl4sn")
+shader_parameter/dark_color = Color(0.31729335, 0.26607618, 0.15891895, 1)
+shader_parameter/light_color = Color(0.56304574, 0.5216547, 0.37159342, 1)
+shader_parameter/light_detail = 44.3010016292975
+
 [node name="Asteroid" type="RigidBody2D" unique_id=956237818]
+material = SubResource("ShaderMaterial_37jkc")
 collision_layer = 2
 collision_mask = 3
 gravity_scale = 0.0

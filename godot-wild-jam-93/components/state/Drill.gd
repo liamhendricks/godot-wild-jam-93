@@ -25,20 +25,20 @@ func init() -> void:
 	player.add_child(drill_particles)
 	drill_particles.position = player.raycast.target_position
 
-func process(_delta:float) -> void:
-	drill_burst_value = lerp(drill_burst_value, MAX_DRILL_BURST_VALUE, (_delta * drill_speed_modifier))
+func process(delta : float) -> void:
+	drill_burst_value = lerp(drill_burst_value, MAX_DRILL_BURST_VALUE, (delta * drill_speed_modifier))
 	if drill_burst_value >= MAX_DRILL_BURST_VALUE - 0.01:
 		machine.transition("burst", {"asteroid": asteroid})
 		return
 
-func physics_process(_delta:float) -> void:
+func physics_process(_delta : float) -> void:
 	if !player.raycast.is_colliding():
 		machine.transition("fly")
 		return
 
 	# if we collide with a new asteroid while still in drill state, reset the asteroid
 	if player.raycast.get_collider_rid() != asteroid.get_rid():
-		enter({})
+		enter()
 
 func enter(_data : Dictionary = {}) -> void:
 	_set_asteroid()

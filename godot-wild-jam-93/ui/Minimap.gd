@@ -4,6 +4,7 @@ class_name Minimap
 @export var minimap_scale : float = 0.05
 @export var minimap_radius : float = 100.0
 @export var world_range : float = 2000.0
+
 var shape_generator : ShapeGenerator
 var player : Player
 
@@ -26,9 +27,7 @@ func _draw() -> void:
 			continue
 
 		var normalized = offset / world_range
-
 		var map_pos = center + normalized * minimap_radius
-
 		draw_circle(map_pos, shape_generator.asteroid_size * minimap_scale, Color.SADDLE_BROWN)
 
 	#player

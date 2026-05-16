@@ -6,6 +6,7 @@
 [node name="Ore" type="RigidBody2D" unique_id=45542919]
 gravity_scale = 0.0
 script = ExtResource("1_0eihh")
+size_px = 16.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=161058284]
 

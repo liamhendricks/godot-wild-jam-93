@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://7s2orcl5po0w" path="res://entities/Player.gd" id="1_ojs4q"]
 [ext_resource type="Script" uid="uid://be36p4yydhbkw" path="res://components/MovementComponent.gd" id="2_lw5ub"]
 [ext_resource type="Texture2D" uid="uid://d1m8652gvjxjq" path="res://assets/itsdrillingtime!!.png" id="3_lw5ub"]
+[ext_resource type="Script" uid="uid://blwa58xt0tpgl" path="res://components/ResourceCollectionComponent.gd" id="4_ks8m5"]
+[ext_resource type="Script" uid="uid://dm3gvkxf02jyf" path="res://components/InventoryComponent.gd" id="5_l1ths"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 8.0
@@ -151,3 +153,9 @@ texture_filter = 1
 rotation = 1.5718023
 sprite_frames = SubResource("SpriteFrames_7qicf")
 animation = &"hull_transition"
+
+[node name="ResourceCollectionComponent" type="Node" parent="." unique_id=1515844901]
+script = ExtResource("4_ks8m5")
+
+[node name="InventoryComponent" type="Node" parent="." unique_id=1505962301]
+script = ExtResource("5_l1ths")

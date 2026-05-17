@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://c5e2txg2grome" path="res://components/state/Drill.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://c2opaw30b4xa3" path="res://components/state/Burst.gd" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bspesketaayad" path="res://effects/SpaceBackground.tscn" id="9_kek77"]
+[ext_resource type="Script" uid="uid://cg6ha4l48wg14" path="res://components/state/Hanger.gd" id="10_dg77c"]
+[ext_resource type="PackedScene" uid="uid://dmrgm8iua12fd" path="res://entities/MotherShip.tscn" id="10_efxa6"]
+[ext_resource type="Script" uid="uid://h6yqckn4ona" path="res://data/ResourceData.gd" id="11_dg77c"]
 
 [sub_resource type="Gradient" id="Gradient_1bvp3"]
 
@@ -38,6 +41,16 @@ script = ExtResource("8_5vw27")
 state_name = "burst"
 metadata/_custom_type_script = "uid://c2opaw30b4xa3"
 
+[sub_resource type="Resource" id="Resource_w48qg"]
+script = ExtResource("10_dg77c")
+state_name = "hanger"
+metadata/_custom_type_script = "uid://cg6ha4l48wg14"
+
+[sub_resource type="Resource" id="Resource_ycdy4"]
+script = ExtResource("11_dg77c")
+resource_amount = 12
+metadata/_custom_type_script = "uid://h6yqckn4ona"
+
 [node name="Main" type="Node2D" unique_id=915958229]
 z_index = 1
 script = ExtResource("1_0xm2m")
@@ -53,19 +66,18 @@ player = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=851280059]
 
-[node name="Player" parent="." unique_id=541402811 node_paths=PackedStringArray("state_machine") instance=ExtResource("4_1bvp3")]
+[node name="Player" parent="." unique_id=541402811 node_paths=PackedStringArray("state_machine", "camera") instance=ExtResource("4_1bvp3")]
 state_machine = NodePath("../StateMachine")
+camera = NodePath("../Camera2D")
 
 [node name="StateMachine" type="Node" parent="." unique_id=2086443390]
 script = ExtResource("4_lquwl")
-states = Array[ExtResource("5_lquwl")]([SubResource("Resource_272bh"), SubResource("Resource_5vw27"), SubResource("Resource_kek77")])
+states = Array[ExtResource("5_lquwl")]([SubResource("Resource_272bh"), SubResource("Resource_5vw27"), SubResource("Resource_kek77"), SubResource("Resource_w48qg")])
 metadata/_custom_type_script = "uid://bdi6qp6ufr7jy"
 
-[node name="SpawnTimer" type="Timer" parent="." unique_id=829186866]
-wait_time = 3.0
-
-[node name="DespawnTimer" type="Timer" parent="." unique_id=242551734]
-wait_time = 3.0
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[node name="MotherShip" parent="." unique_id=828673027 node_paths=PackedStringArray("player", "camera") instance=ExtResource("10_efxa6")]
+visible = false
+monitorable = false
+bounty = SubResource("Resource_ycdy4")
+player = NodePath("../Player")
+camera = NodePath("../Camera2D")

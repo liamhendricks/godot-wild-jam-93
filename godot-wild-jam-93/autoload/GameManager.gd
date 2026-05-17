@@ -1,13 +1,12 @@
 extends Node
 
-enum RESOURCE_TYPES {ORE}
+enum RESOURCE_TYPES {ORE, CRYSTALS}
 
 var rng : RandomNumberGenerator
 
 func _ready() -> void:
 	rng = RandomNumberGenerator.new()
 	rng.seed = hash(Time.get_ticks_msec())
-
 
 func get_centroid(points : PackedVector2Array) -> Vector2:
 	if points.size() == 0:
@@ -29,3 +28,6 @@ func get_polygon_area(points: PackedVector2Array) -> float:
 		area += abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0)
 
 	return area
+
+func provide_tween() -> Tween:
+	return get_tree().create_tween()

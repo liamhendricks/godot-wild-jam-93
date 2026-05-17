@@ -1,6 +1,7 @@
 class_name State extends Resource
 
 @export var state_name : String = ""
+
 var player : Player
 var machine : StateMachine
 

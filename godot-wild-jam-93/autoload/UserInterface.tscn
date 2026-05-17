@@ -16,3 +16,9 @@ offset_bottom = 294.0
 script = ExtResource("2_k50kc")
 minimap_radius = 80.0
 metadata/_custom_type_script = "uid://b4mto80j8slix"
+
+[node name="Label" type="Label" parent="." unique_id=333695033]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Ore collected: 0"

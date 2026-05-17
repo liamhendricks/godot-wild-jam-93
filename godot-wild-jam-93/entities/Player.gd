@@ -5,6 +5,7 @@ class_name Player
 @export var state_machine : StateMachine
 @export var resource_collection_component : ResourceCollectionComponent
 @export var inventory_component : InventoryComponent
+@export var camera : Camera2D
 
 @onready var raycast : RayCast2D = $RayCast2D
 @onready var left_spawn : Node2D = $LeftSpawn

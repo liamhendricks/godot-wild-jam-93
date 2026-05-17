@@ -1,41 +1,39 @@
 [gd_scene format=3 uid="uid://dmrgm8iua12fd"]
 
 [ext_resource type="Script" uid="uid://cqfstfv1k8gh" path="res://entities/mother_ship.gd" id="1_w43xp"]
-[ext_resource type="Script" uid="uid://h6yqckn4ona" path="res://data/ResourceData.gd" id="2_w43xp"]
+[ext_resource type="Texture2D" uid="uid://duv655dooac3v" path="res://entities/MotherShipAss.png" id="2_fsxry"]
+[ext_resource type="Script" uid="uid://3v1tyivjfmqj" path="res://entities/MothershipEye.gd" id="3_0rkyi"]
 
-[sub_resource type="Resource" id="Resource_fsxry"]
-script = ExtResource("2_w43xp")
-resource_amount = 12
-metadata/_custom_type_script = "uid://h6yqckn4ona"
-[ext_resource type="Texture2D" uid="uid://duv655dooac3v" path="res://entities/MotherShipAss.png" id="2_w43xp"]
-[ext_resource type="Texture2D" uid="uid://d1p4krnumrxcy" path="res://entities/eyecircle.png" id="3_0rkyi"]
-[ext_resource type="Texture2D" uid="uid://bxbo0e3gxyyl3" path="res://entities/pupil.png" id="4_f1fb0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsxry"]
+size = Vector2(165, 123)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rkyi"]
-size = Vector2(102, 20)
-
-[node name="MotherShip" type="Node2D" unique_id=1851260540]
-z_index = 100
+[node name="MotherShip" type="Area2D" unique_id=345502717]
 script = ExtResource("1_w43xp")
-bounty = SubResource("Resource_fsxry")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=479078289]
-z_index = -100
-texture = ExtResource("2_w43xp")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2056654260]
+texture = ExtResource("2_fsxry")
 
-[node name="eyecircle" type="Sprite2D" parent="Sprite2D" unique_id=1610361756]
-position = Vector2(-132, 6)
-texture = ExtResource("3_0rkyi")
+[node name="Eye" type="Node2D" parent="." unique_id=1785906246]
+position = Vector2(-130, 7)
+script = ExtResource("3_0rkyi")
 
-[node name="pupil" type="Sprite2D" parent="Sprite2D/eyecircle" unique_id=2060246649]
-position = Vector2(8, 0)
-texture = ExtResource("4_f1fb0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=14427890]
+position = Vector2(7.5, 3.5)
+shape = SubResource("RectangleShape2D_fsxry")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1916907645]
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1636178073]
+wait_time = 120.0
+autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2028276749]
-position = Vector2(4, 5)
-shape = SubResource("RectangleShape2D_0rkyi")
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1680471072]
+wait_time = 12.0
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Control" type="Control" parent="." unique_id=1830230622]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

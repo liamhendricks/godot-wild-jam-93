@@ -32,6 +32,10 @@ window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
+[global_group]
+
+Hangar="the ship is in the hangar of the mothership"
+
 [input]
 
 quit={

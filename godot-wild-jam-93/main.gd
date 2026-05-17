@@ -30,13 +30,15 @@ func _physics_process(delta: float) -> void:
 
 	enter_timer = enter_timer - delta
 	exit_timer = exit_timer - delta
-	if enter_timer <= 0:
+	if enter_timer <= 0 and mother_arriving == null: 
 		mother_arriving = mother_ship.instantiate()
 		mother_arriving.position = player.position
 		add_child(mother_arriving)#mother is here 
+		mother_arriving.player = player #seting player to mothership 
 		enter_timer = 20.0
 		exit_timer = 10
 	if exit_timer <= 0:
 		if mother_arriving != null:
+			camera.zoom = Vector2(1,1)
 			mother_arriving.queue_free()
 			mother_arriving = null

@@ -11,7 +11,7 @@ class_name Player
 @onready var left_spawn : Node2D = $LeftSpawn
 @onready var right_spawn : Node2D = $RightSpawn
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-@onready var thrusters : GPUParticles2D = $GPUParticles2D
+@onready var thrusters : GPUParticles2D = $Thrusters
 
 func _process(_delta: float) -> void:
 	if movement_component.dir == Vector2.ZERO:
@@ -23,3 +23,6 @@ func _process(_delta: float) -> void:
 	velocity_ratio = clamp(velocity_ratio, 0.0, 1.0)
 
 	thrusters.amount_ratio = velocity_ratio
+	if velocity.length() > 5.0:
+		var v := -velocity.normalized() * movement_component.speed
+		thrusters.process_material.gravity = Vector3(v.x, v.y, 0.0)

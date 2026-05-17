@@ -6,10 +6,16 @@ class_name SpaceBackground
 var scroll_offset : Vector2
 var player : Player
 
+func _ready() -> void:
+	pass
+
 func init(_player : Player) -> void:
 	player = _player
 
 func _process(delta: float) -> void:
+	if player == null:
+		return
+
 	material.set_shader_parameter(
 		"mouse",
 		player.position * 0.0001

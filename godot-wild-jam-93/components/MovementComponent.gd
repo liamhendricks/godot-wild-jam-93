@@ -23,7 +23,6 @@ func _physics_process(delta: float) -> void:
 		body_to_move.velocity = body_to_move.velocity.move_toward(velocity, delta * acceleration)
 		AudioManager.play_audio("engine1", 1)
 
-	print(body_to_move.velocity)
 	body_to_move.move_and_slide()
 
 func _process(_delta: float) -> void:

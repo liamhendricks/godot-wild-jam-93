@@ -11,6 +11,8 @@ var audio : Dictionary = {
 	"engine1": load("res://assets/audio/engine1.wav"),
 	"drill1": load("res://assets/audio/drill1.wav"),
 	"explosion1": load("res://assets/audio/explosion1.wav"),
+	"explosion2": load("res://assets/audio/explosion2.wav"),
+	"noise1": load("res://assets/audio/noise1.wav")
 }
 
 func _ready() -> void:
@@ -26,6 +28,7 @@ func _ready() -> void:
 	players.append(audio_stream_player2)
 	SignalBus.resource_gathered.connect(_on_resource_gathered)
 	SignalBus.asteroid_split.connect(_on_asteroid_split)
+	SignalBus.game_start.connect(_on_game_start)
 
 func play_audio(key : String, i : int = 0) -> void:
 	if key not in audio || i >= len(players):
@@ -60,4 +63,9 @@ func _on_resource_gathered(_data : ResourceData) -> void:
 func _on_asteroid_split(_at : Vector2) -> void:
 	audio_stream_player_ui.stop()
 	audio_stream_player_ui.stream = audio["explosion1"]
+	audio_stream_player_ui.play()
+
+func _on_game_start() -> void:
+	audio_stream_player_ui.stop()
+	audio_stream_player_ui.stream = audio["noise1"]
 	audio_stream_player_ui.play()

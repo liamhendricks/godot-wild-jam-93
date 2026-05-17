@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://c266oshurn8bm"]
 
-[sub_resource type="Gradient" id="Gradient_l1ths"]
-colors = PackedColorArray(0.6509804, 0.29411766, 0, 1, 1, 0.72156864, 0.19607843, 1)
+[sub_resource type="Gradient" id="Gradient_aqlym"]
+colors = PackedColorArray(1, 0.31764707, 0.19607843, 1, 1, 0.72156864, 0.19607843, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a1f57"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r0h6k"]
+noise_type = 0
+seed = 19
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_25mxy"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v2tx8"]
 width = 8
 height = 8
-noise = SubResource("FastNoiseLite_a1f57")
-color_ramp = SubResource("Gradient_l1ths")
+noise = SubResource("FastNoiseLite_r0h6k")
+color_ramp = SubResource("Gradient_aqlym")
+
+[sub_resource type="Gradient" id="Gradient_r0h6k"]
+offsets = PackedFloat32Array(0, 0.36491936, 1)
+colors = PackedColorArray(1, 0.31764707, 0.19607843, 1, 1, 0.9862429, 0.98379195, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v2tx8"]
+gradient = SubResource("Gradient_r0h6k")
 
 [sub_resource type="Curve" id="Curve_l1ths"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6226054, 0.9352313), 0.0, 0.0, 0, 0, Vector2(0.98850584, 0.19964415), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6034483, 0.9398577), 0.0, 0.0, 0, 0, Vector2(1, 0.17651248), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_a1f57"]
@@ -23,12 +32,15 @@ particle_flag_align_y = true
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 8.0
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
 gravity = Vector3(-98, 0, 0)
 scale_curve = SubResource("CurveTexture_a1f57")
+color_ramp = SubResource("GradientTexture1D_v2tx8")
 
 [node name="Thrusters" type="GPUParticles2D" unique_id=1873001255]
 emitting = false
 amount = 50
-texture = SubResource("NoiseTexture2D_25mxy")
+texture = SubResource("NoiseTexture2D_v2tx8")
 explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_l1ths")

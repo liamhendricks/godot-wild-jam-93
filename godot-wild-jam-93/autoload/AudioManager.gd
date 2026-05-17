@@ -26,6 +26,7 @@ func _ready() -> void:
 	players.append(audio_stream_player_ui)
 	players.append(audio_stream_player)
 	players.append(audio_stream_player2)
+
 	SignalBus.resource_gathered.connect(_on_resource_gathered)
 	SignalBus.asteroid_split.connect(_on_asteroid_split)
 	SignalBus.game_start.connect(_on_game_start)
